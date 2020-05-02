@@ -42,22 +42,18 @@ export default function Mensagem({ history }) {
   }
 
   return (
-    <Container>
-      <h1>Bem vindo {autor}</h1>
-      <button type="button" onClick={handleLogout}>
-        Sair
-      </button>
-      <div>
+    <>
+      <h1 style={{ textAlign: 'center' }}>Bem vindo(a) {autor}</h1>
+      <Container>
         <ul>
           {msgs.map((msg) => (
             <li key={msg._id}>
               <span>
                 {msg.data} - <strong>{msg.autor}</strong> - {msg.horario}
-                <p>=> {msg.conteudo}</p>
               </span>
+              <p>=> {msg.conteudo}</p>
             </li>
           ))}
-          <div />
         </ul>
 
         <form onSubmit={handleSubmit}>
@@ -67,8 +63,11 @@ export default function Mensagem({ history }) {
             onChange={(e) => setConteudo(e.target.value)}
           />
           <button type="submit">Enviar</button>
+          <button type="button" onClick={handleLogout}>
+            Sair
+          </button>
         </form>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 }
